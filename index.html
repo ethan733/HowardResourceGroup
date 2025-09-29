@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Howard Resource Group</title>
+  <style>
+    :root {
+      --bg-light: #f9f9f9;
+      --bg-dark: #121212;
+      --text-light: #121212;
+      --text-dark: #f9f9f9;
+      --accent: #0077ff;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header img {
+      max-width: 100px;
+      border-radius: 8px;
+    }
+    h1 { margin: 0.5rem 0; }
+    h2 { margin-top: 2rem; text-align: center; }
+    .services {
+      display: grid;
+      gap: 1rem;
+      padding: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.8);
+      transition: background 0.3s;
+    }
+    body.dark .card {
+      background: rgba(0, 0, 0, 0.6);
+      border-color: #333;
+    }
+    .card h3 { margin-top: 0; }
+    .contact {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    input, textarea, button {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .quick-links {
+      margin-top: 1rem;
+    }
+    .quick-links a {
+      margin: 0 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: var(--accent);
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle" onclick="toggleMode()">Toggle Mode</button>
+
+  <header>
+    <img src="logo.png" alt="Howard Resource Group Logo" />
+    <h1>Howard Resource Group</h1>
+    <p>Your trusted partner for custom PC builds & repairs in Northern Georgia</p>
+  </header>
+
+  <h2>Our Services</h2>
+  <section class="services">
+    <div class="card">
+      <h3>PC Builds</h3>
+      <p>Flat rate: <strong>$300</strong></p>
+      <p>Custom 1:1 system builds available by quote.</p>
+    </div>
+    <div class="card">
+      <h3>Repairs</h3>
+      <p>Consultation-based repairs. Get a free initial diagnosis and tailored solutions.</p>
+    </div>
+    <div class="card">
+      <h3>Maintenance Plans</h3>
+      <p>Keep your system running smoothly with regular maintenance & tune-ups.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Get in Touch</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <input type="tel" placeholder="Your Phone" />
+      <textarea rows="4" placeholder="How can we help?" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <div class="quick-links">
+      <p>Or reach out directly:</p>
+      <a href="tel:7065315161">📞 Call</a>
+      <a href="mailto:ethan@example.com">✉️ Email</a>
+    </div>
+  </section>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
