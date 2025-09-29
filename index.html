@@ -6,35 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
-      --bg-light: #f9f9f9;
-      --bg-dark: #121212;
-      --text-light: #121212;
-      --text-dark: #f9f9f9;
-      --accent: #4a90e2;
+      --bg-light: #ffffff;
+      --bg-dark: #000000;
+      --text-light: #000000;
+      --text-dark: #ffffff;
+      --accent: #0071e3; /* Apple-style blue */
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg-light);
       color: var(--text-light);
-      transition: background 0.5s, color 0.5s;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(270deg, #4a90e2, #50c9c3, #f5af19, #f12711);
-      background-size: 800% 800%;
-      z-index: -1;
-      animation: gradientShift 20s ease infinite;
-      opacity: 0.2;
+      transition: background 0.6s, color 0.6s;
     }
 
     body.dark {
@@ -43,67 +27,86 @@
     }
 
     header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
+      text-align: center;
+      padding: 3rem 1rem 1rem;
       animation: fadeDown 1s ease;
     }
 
     header img {
-      max-height: 70px;
-      margin-right: 1rem;
-      transition: transform 0.3s ease;
-    }
-
-    header img:hover {
-      transform: scale(1.05);
+      max-height: 80px;
+      margin-bottom: 1rem;
     }
 
     header h1 {
-      font-size: 1.8rem;
+      font-size: 2.8rem;
+      font-weight: 600;
       margin: 0;
-      font-weight: bold;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+      opacity: 0.7;
     }
 
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-      animation: fadeIn 1.2s ease;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
 
     section {
-      margin-bottom: 2.5rem;
-      padding: 2rem;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(6px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      margin-bottom: 4rem;
+      animation: fadeIn 1.2s ease;
     }
 
-    body.dark section {
-      background: rgba(0,0,0,0.6);
-    }
-
-    section:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    h2 {
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-      padding-bottom: 4px;
+    section h2 {
+      font-size: 2rem;
+      font-weight: 500;
       margin-bottom: 1rem;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .service-card {
+      padding: 2rem;
+      border-radius: 16px;
+      background: rgba(0,0,0,0.03);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    body.dark .service-card {
+      background: rgba(255,255,255,0.07);
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
     }
 
     form input, form textarea, form button {
       width: 100%;
-      padding: 0.9rem;
-      margin: 0.5rem 0;
-      border-radius: 8px;
+      padding: 1rem;
+      margin: 0.6rem 0;
+      border-radius: 12px;
       border: 1px solid #ccc;
       font-size: 1rem;
       transition: border-color 0.3s, box-shadow 0.3s;
@@ -111,7 +114,7 @@
 
     form input:focus, form textarea:focus {
       border-color: var(--accent);
-      box-shadow: 0 0 8px rgba(74,144,226,0.3);
+      box-shadow: 0 0 8px rgba(0,113,227,0.3);
       outline: none;
     }
 
@@ -120,19 +123,21 @@
       color: white;
       border: none;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 1.05rem;
       transition: background 0.3s, transform 0.2s;
     }
 
     form button:hover {
-      background: #357abd;
+      background: #005bb5;
       transform: scale(1.02);
     }
 
     .contact-info {
       text-align: center;
-      font-size: 1.1rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
+      font-size: 1.2rem;
+      opacity: 0.8;
       animation: fadeUp 1.5s ease;
     }
 
@@ -144,13 +149,13 @@
       background: var(--accent);
       color: white;
       border: none;
-      border-radius: 20px;
+      border-radius: 30px;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
     }
 
     .theme-toggle:hover {
-      background: #357abd;
+      background: #005bb5;
       transform: scale(1.05);
     }
 
@@ -169,12 +174,6 @@
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
   </style>
 </head>
 <body>
@@ -183,14 +182,26 @@
   <header>
     <img src="logo.png" alt="Howard Resource Group Logo">
     <h1>Howard Resource Group</h1>
+    <p>Building & Repairing Computers in Northern Georgia</p>
   </header>
 
   <main>
     <section>
       <h2>Our Services</h2>
-      <p>💻 <strong>Custom PC Builds</strong> — $300 flat rate (per-quote for 1:1 systems)</p>
-      <p>🛠️ <strong>Repair & Consultations</strong></p>
-      <p>🔧 <strong>Maintenance Plans</strong></p>
+      <div class="services">
+        <div class="service-card">
+          <h3>💻 Custom PC Builds</h3>
+          <p>$300 flat rate, per-quote for 1:1 custom systems.</p>
+        </div>
+        <div class="service-card">
+          <h3>🛠️ Repairs & Consultations</h3>
+          <p>Expert diagnostics and repair for your devices.</p>
+        </div>
+        <div class="service-card">
+          <h3>🔧 Maintenance Plans</h3>
+          <p>Keep your systems running smoothly year-round.</p>
+        </div>
+      </div>
     </section>
 
     <section>
