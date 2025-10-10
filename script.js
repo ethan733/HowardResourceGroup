@@ -1,4 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
+
   console.log("HRG site ready 🚀");
 
   const openModal = (id) => document.getElementById(id)?.classList.add("active");
