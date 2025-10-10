@@ -1,4 +1,3 @@
-// script.js
 window.addEventListener("load", () => {
   console.log("HRG site ready 🚀");
 
@@ -6,7 +5,7 @@ window.addEventListener("load", () => {
     const modal = document.getElementById(id);
     if (!modal) return;
     modal.classList.add("active");
-    document.body.style.overflow = "hidden"; // prevent background scroll
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = (id) => {
@@ -16,9 +15,8 @@ window.addEventListener("load", () => {
     document.body.style.overflow = "";
   };
 
-  // Global click delegation
   document.addEventListener("click", (e) => {
-    const openBtn  = e.target.closest("[data-open]");
+    const openBtn = e.target.closest("[data-open]");
     const closeBtn = e.target.closest("[data-close]");
 
     if (openBtn) {
@@ -36,7 +34,6 @@ window.addEventListener("load", () => {
     }
   });
 
-  // Submit handlers for demo
   document.querySelectorAll("form").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
