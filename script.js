@@ -1,22 +1,32 @@
-window.addEventListener("load", () => {
-
+// script.js
+document.addEventListener("DOMContentLoaded", () => {
   console.log("HRG site ready 🚀");
 
-  const openModal = (id) => document.getElementById(id)?.classList.add("active");
+  const openModal  = (id) => document.getElementById(id)?.classList.add("active");
   const closeModal = (id) => document.getElementById(id)?.classList.remove("active");
 
-  // Open modal buttons
-  document.querySelectorAll("[data-open]").forEach(btn => {
-    btn.addEventListener("click", () => openModal(btn.dataset.open));
-  });
+  // --- Event delegation: works even if elements load later or change ---
+  document.addEventListener("click", (e) => {
+    const openBtn  = e.target.closest("[data-open]");
+    const closeBtn = e.target.closest("[data-close]");
 
-  // Close modal buttons and overlays
-  document.querySelectorAll("[data-close]").forEach(btn => {
-    btn.addEventListener("click", () => closeModal(btn.dataset.close));
+    if (openBtn) {
+      const id = openBtn.dataset.open;
+      if (id) openModal(id);
+      e.preventDefault();
+      return;
+    }
+
+    if (closeBtn) {
+      const id = closeBtn.dataset.close;
+      if (id) closeModal(id);
+      e.preventDefault();
+      return;
+    }
   });
 
   // Inline thank-you confirmation
-  document.querySelectorAll("form").forEach(form => {
+  document.querySelectorAll("form").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const fields = form.querySelector(".form-fields");
