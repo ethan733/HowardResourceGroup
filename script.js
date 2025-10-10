@@ -1,11 +1,22 @@
 // script.js
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   console.log("HRG site ready 🚀");
 
-  const openModal  = (id) => document.getElementById(id)?.classList.add("active");
-  const closeModal = (id) => document.getElementById(id)?.classList.remove("active");
+  const openModal = (id) => {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden"; // prevent background scroll
+  };
 
-  // --- Event delegation: works even if elements load later or change ---
+  const closeModal = (id) => {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  };
+
+  // Global click delegation
   document.addEventListener("click", (e) => {
     const openBtn  = e.target.closest("[data-open]");
     const closeBtn = e.target.closest("[data-close]");
@@ -25,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Inline thank-you confirmation
+  // Submit handlers for demo
   document.querySelectorAll("form").forEach((form) => {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
